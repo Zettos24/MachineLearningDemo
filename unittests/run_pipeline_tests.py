@@ -1,7 +1,7 @@
 import sys
 import os
 import unittest
-from unittests.TestAccuracy import MNISTAccuracyTEST
+from TestAccuracy import MNISTAccuracyTEST
 
 # Add the parent directory of the 'unittests' folder to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
