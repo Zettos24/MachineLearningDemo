@@ -30,4 +30,4 @@ jobs:
 
       - name: Test with unittest
         run: |
-          conda run -n MachineLearning python -m unittest discover -s unittests -p "*.py"
+          conda run -n MachineLearning python unittests/run_pipeline_tests.py
