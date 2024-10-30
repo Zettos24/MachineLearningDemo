@@ -15,7 +15,7 @@ class MNISTAccuracyTEST(unittest.TestCase):
         Initializes the MnistDataset instance, which downloads and prepares
         the MNIST dataset for training and testing.
         """
-        cls.mnist_dataset = MnistDataset()
+        cls.mnist_dataset = MnistDataset(10)
 
     @classmethod
     def tearDownClass(cls):

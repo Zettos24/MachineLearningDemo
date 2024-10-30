@@ -70,7 +70,7 @@ class MnistDataset:
         test_predictions (numpy.ndarray): Predictions on the test set.
     """
 
-    def __init__(self):
+    def __init__(self, epochs):
         """Initializes the dataset, preprocesses data, and initializes network parameters."""
         # Step 1: Download the MNIST dataset
         mnist = fetch_openml('mnist_784', version=1)
@@ -103,7 +103,7 @@ class MnistDataset:
         self.b2 = np.zeros((1, self.output_size))
 
         # Initialize results
-        self.epochs = 5
+        self.epochs = epochs
         self.train_accuracies = []
         self.test_accuracies = []
         self.test_predictions = None
@@ -215,6 +215,7 @@ class MnistDataset:
         num_examples = min(5, len(misclassified))  # Show up to 5 misclassifications
 
         plt.figure(figsize=(10, 3))
+        plt.suptitle('Misclassified Examples', fontsize=16)  # Title for the figure
         for i in range(num_examples):
             index = misclassified[i]
             plt.subplot(1, num_examples, i + 1)
