@@ -1,0 +1,33 @@
+name: Python Package using Conda
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        python-version: [3.12]
+        os: [ubuntu-latest, windows-latest]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Miniconda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          auto-update-conda: true
+          miniconda-version: 'latest'
+          python-version: ${{ matrix.python-version }}
+          environment-file: environment.yml
+          activate-environment: MachineLearning
+
+      - name: Lint with flake8
+        run: |
+          conda install flake8
+          conda run -n MachineLearning flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          conda run -n MachineLearning flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+      - name: Test with unittest
+        run: |
+          conda run -n MachineLearning python -m unittest discover -s unittests -p "*.py"
