@@ -6,6 +6,10 @@ from unittests.TestAccuracy import MNISTAccuracyTEST
 # Add the parent directory of the 'unittests' folder to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+# Print sys.path to verify the directory was added
+print("Current sys.path:")
+print(sys.path)
+
 
 # Create a test suite that contains specific tests
 suite = unittest.TestSuite()
