@@ -1,6 +1,12 @@
+import sys
+import os
 import unittest
-from TestAccuracy import MNISTAccuracyTEST
 
+# Add the parent directory of the 'unittests' folder to the Python path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+# Now import your test classes
+from TestAccuracy import MNISTAccuracyTEST
 
 # Create a test suite that contains specific tests
 suite = unittest.TestSuite()
